@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Confiança Engenharia Elétrica &amp; Solar</title>
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #f7b731;
+      --secondary: #22223b;
+      --accent: #1526c0;
+      --bg-light: #f8f9fa;
+      --bg-gradient: linear-gradient(135deg, #d1ce16 0%, #e4e714 100%);
+      --text-dark: #222;
+      --text-light: #fff;
+      --menu-bg: #fff;
+      --menu-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --card-radius: 18px;
+      --card-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      --transition: .2s cubic-bezier(.4,0,.2,1);
+    }
+    body {
+      background: var(--bg-gradient);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark);
+    }
+    .navbar {
+      background: var(--menu-bg);
+      box-shadow: var(--menu-shadow);
+      border-radius: 0 0 0px 0px;
+      padding: 0.0rem 0;
+      transition: var(--transition);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary) !important;
+      letter-spacing: 2px;
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+      color: var(--secondary) !important;
+      font-weight: 500;
+      margin-right: 1rem;
+      transition: color var(--transition);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+    }
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link:hover {
+      background: var(--primary);
+      color: var(--text-light) !important;
+    }
+    .navbar-toggler {
+      border: none;
+      background: var(--primary);
+      color: var(--text-light);
+      border-radius: 8px;
+    }
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: url('img/LOGO CONFIA NOVO CF (1).PNG') no-repeat right center/contain;
+      background-size: 50%;
+      background-color: var(--bg-light);
+      border-radius: 0 0 var(--card-radius) var(--card-radius);
+      margin-bottom: 5rem;
+      padding: 4rem 0;
+      margin-right: 0rem;
+    }
+    .hero-content {
+      max-width: 500px;
+      padding: 3rem 0;
+    }
+    .hero-content h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    .hero-content p {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn-warning, .btn-success, .btn-outline-warning {
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(247,183,49,0.08);
+      transition: background var(--transition), color var(--transition);
+    }
+    .btn-warning:hover, .btn-success:hover, .btn-outline-warning:hover {
+      background: var(--accent);
+      color: var(--text-light);
+      border-color: var(--accent);
+    }
+    .section-title {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .section-title h2 {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 2.2rem;
+    }
+    .section-title p {
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+    .card-service {
+      border: none;
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      background: var(--bg-light);
+      margin-bottom: 1.5rem;
+    }
+    .card-service:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 6px 24px rgba(78,168,222,0.13);
+      background: #fff;
+    }
+    .card-service .fa-2x {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .testimonial {
+      background: #fff;
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-left: 6px solid var(--accent);
+    }
+    .testimonial i {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+    .contact-info {
+      background: var(--bg-light);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+    }
+    .contact-info i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-right: 10px;
+    }
+    .footer {
+      background: var(--secondary);
+      color: var(--text-light);
+      padding: 2rem 0 1rem 0;
+      border-radius: var(--card-radius) var(--card-radius) 0 0;
+      margin-top: 3rem;
+    }
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-social a {
+      color: var(--text-light);
+      margin: 0 8px;
+      font-size: 1.5rem;
+      transition: color var(--transition);
+    }
+    .footer-social a:hover {
+      color: var(--accent);
+    }
+    .product-img img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--card-radius);
+      background: #fff;
+      box-shadow: var(--card-shadow);
+    }
+    @media (max-width: 991px) {
+      .hero {
+        background-size: 70%;
+        min-height: 40vh;
+      }
+      .hero-content {
+        padding: 2rem 0;
+      }
+      .product-img img {
+        height: 220px;
+      }
+    }
+    @media (max-width: 767px) {
+      .hero {
+        background-size: 100%;
+        min-height: 30vh;
+      }
+      .hero-content h1 {
+        font-size: 1.5rem;
+      }
+      .section-title h2 {
+        font-size: 1.5rem;
+      }
+      .card-service {
+        padding: 1rem;
+      }
+      .product-img img {
+        height: 30px;
+      }
+    }
+  </style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+section {
+    margin-bottom: 40px;
+}
+h1, h2, h3 {
+    color: #333;
+}
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+}
+</style></head>
+<body><div class="container">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+<div class="container">
+<img alt="img/logo" class="navbar-brand" src="img/LOGO CONFIA NOVO CF (1).PNG" width="150px"/>
+<button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">Quem Somos</a></li>
+<li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
+<li class="nav-item"><a class="nav-link" href="#products">Produtos</a></li>
+<li class="nav-item"><a class="nav-link" href="#testimonial">Depoimentos</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="hero" id="home">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-6 hero-content">
+<h1 class="display-5 fw-bold mb-3">Confiança Não se Compra, Se Entrega</h1><br><br><br><br>
+<p class="lead mb-4"></p>
+<a class="btn btn-warning btn-lg rounded-pill" href="#contact">Faça Seu Orçamento Aqui!</a>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-5" id="about">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-md-6 mb-4 mb-md-0">
+<img alt="Sobre nós" class="img-fluid rounded-4 shadow" src="img/tb02.jpg"/>
+</div>
+<div class="col-md-6">
+<div class="section-title">
+<h2 class="fw-bold">Quem Somos</h2>
+<p class="text-muted">Engenharia aplicada à energia com segurança, eficiência e compromisso.</p>
+</div>
+A Confiança Elétrica e Solar</b> é o nome fantasia da empresa Confiança Engenharia Elétrica e Solar LTDA, registrada sob o CNPJ 31.714.953/0001-45, com sede no Rio de Janeiro – RJ.</p>
+<p>Desde 2018, entregamos soluções completas e seguras em engenharia elétrica e energia solar fotovoltaica, atendendo residências, comércios e indústrias em todo o estado. Nossa atuação vai do projeto à instalação, passando pela homologação junto às concessionárias e um suporte técnico de excelência.</p>
+<p>Somos uma empresa que leva a palavra “confiança” a sério — tanto no atendimento quanto na entrega de resultados.</p>
+<p>A Confiança Elétrica e Solar é liderada por <Q><b>Claudio Quaglioz (CEO)</b></Q> e tem como responsável técnico o <Q><b>Eng. eletricista Fabiano Alves</b></Q>, profissional com ampla experiência e comprometido com a eficiência energética, a segurança das instalações e a satisfação total do cliente.</p>
+</div>
+</div>
+</section>
+<!-- Serviços Section -->
+<section class="py-5 bg-light" id="services">
+<div class="container">
+<div class="section-title">
+<h2 class="fw-bold">Nossos Serviços</h2>
+<p class="text-muted">Atividades Realizadas</p>
+</div>
+<div class="row g-4">
+<div class="col-md-4">
+<div class="card card-service h-100 text-center p-4">
+<div class="mb-3"><i class="fas fa-bolt fa-2x text-warning"></i></div>
+<h5 class="fw-bold mb-2">Energia Solar Fotovoltaica On-Grid</h5>
+<p>Projeto, instalação e homologação com engenheiro responsável.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card card-service h-100 text-center p-4">
+<div class="mb-3"><i class="fas fa-plug fa-2x text-warning"></i></div>
+<h5 class="fw-bold mb-2">Projetos de Aumento de Carga</h5>
+<p>Regularização e ampliação junto à Light, Enel e demais concessionárias.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card card-service h-100 text-center p-4">
+<div class="mb-3"><i class="fas fa-lightbulb fa-2x text-warning"></i></div>
+<h5 class="fw-bold mb-2">SPDA – Para-Raios</h5>
+<p>Instalação, inspeção e manutenção de Sistemas de Proteção contra Descargas Atmosféricas.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card card-service h-100 text-center p-4">
+<div class="mb-3"><i class="fas fa-charging-station fa-2x text-warning"></i></div>
+<h5 class="fw-bold mb-2">Manutenção em Subestações</h5>
+<p>Vistorias técnicas, manutenções preventivas e corretivas em média tensão.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card card-service h-100 text-center p-4">
+<div class="mb-3"><i class="fas fa-battery-full fa-2x text-warning"></i></div>
+<h5 class="fw-bold mb-2">Projetos Elétricos Residenciais e Comerciais</h5>
+<p>Soluções completas para obras novas ou adequações técnicas.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card card-service h-100 text-center p-4">
+<div class="mb-3"><i class="fas fa-solar-panel fa-2x text-warning"></i></div>
+<h5 class="fw-bold mb-2">Atendimento a condomínios e empresas</h5>
+<p>Manutenções, inspeções, análises de consumo e laudos técnicos.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Products Section Start -->
+<section class="products-section" id="products">
+<div class="container">
+<div class="section-title">
+<h2 class="fw-bold">Produtos</h2>
+<p class="text-muted">Veja alguns de nossos projetos</p>
+</div>
+<div class="row g-4">
+<!-- Carousel de produtos mantido -->
+<div class="col-md-4">
+<div class="products-item">
+<div class="product-img">
+<img alt="Usina" src="img/usina.jpg"/>
+</div>
+<div class="product-content text-center mt-2">
+<a class="btn btn-warning btn-sm rounded-pill mb-2" href="#">75Kwp</a>
+<h5 class="product-name fw-bold">Usina</h5>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="products-item">
+<div class="product-img">
+<img alt="Telhado" src="img/telhado.jpg"/>
+</div>
+<div class="product-content text-center mt-2">
+<a class="btn btn-warning btn-sm rounded-pill mb-2" href="#">Instalação de módulo</a>
+<h5 class="product-name fw-bold">Telhado</h5>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="products-item">
+<div class="product-img">
+<img alt="Projeto PV Sol" src="img/projeto pv sol.jpg"/>
+</div>
+<div class="product-content text-center mt-2">
+<a class="btn btn-warning btn-sm rounded-pill mb-2" href="#">PV Sol</a>
+<h5 class="product-name fw-bold">Projeto PV Sol</h5>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="products-item">
+<div class="product-img">
+<img alt="Substação" src="img/substação01.jpg"/>
+</div>
+<div class="product-content text-center mt-2">
+<a class="btn btn-warning btn-sm rounded-pill mb-2" href="#">Instalação de PPGP</a>
+<h5 class="product-name fw-bold">Substação</h5>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="products-item">
+<div class="product-img">
+<img alt="QGBT" src="img/quadro de distribuição.jpg"/>
+</div>
+<div class="product-content text-center mt-2">
+<a class="btn btn-warning btn-sm rounded-pill mb-2" href="#">Quadro Geral de Baixa Tensão</a>
+<h5 class="product-name fw-bold">QGBT</h5>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="products-item">
+<div class="product-img">
+<img alt="SPDA" src="img/montagem.jpg"/>
+</div>
+<div class="product-content text-center mt-2">
+<a class="btn btn-warning btn-sm rounded-pill mb-2" href="#">Montagem de Para-Raio</a>
+<h5 class="product-name fw-bold">SPDA</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Depoimentos Section -->
+<section class="py-5" id="testimonial">
+<div class="container">
+<div class="section-title">
+<h2 class="fw-bold">Depoimentos</h2>
+<p class="text-muted">A melhor avaliação do mercado</p>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="testimonial">
+<p>
+<i class="fas fa-quote-left"></i>
+              Instalação rápida e equipe atenciosa. Agora minha conta caiu drasticamente. Obrigado, Confiança!
+              <i class="fas fa-quote-right"></i>
+</p>
+<div class="mt-3">
+<strong>Maximiana Dutra Peres, 4,88 kWp</strong><br/>
+<span class="text-muted">Guadalupe/RJ</span>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="testimonial">
+<p>
+<i class="fas fa-quote-left"></i>
+              A casa de repouso precisava de economia. O sistema ficou perfeito e o suporte foi excelente.
+              <i class="fas fa-quote-right"></i>
+</p>
+<div class="mt-3">
+<strong>Casa de Repouso Rei dos Reis, 22,20 kWp</strong><br/>
+<span class="text-muted">Seropédica/RJ</span>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="testimonial">
+<p>
+<i class="fas fa-quote-left"></i>
+              Instalação impecável! Serviço técnico de alto nível. Economizando muito desde o primeiro mês.
+              <i class="fas fa-quote-right"></i>
+</p>
+<div class="mt-3">
+<strong>Marcela Moreira, 75,60 kWp</strong><br/>
+<span class="text-muted">Belford Roxo/RJ</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contato Section -->
+<section class="py-5 bg-light" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2 class="fw-bold">Contato</h2>
+      <p class="text-muted">Estamos aguardando seu contato</p>
+    </div>
+    <div class="row g-4">
+      <!-- Chat WhatsApp -->
+      <div class="col-md-6">
+        <div class="mt-3 text-center chat-box" id="chatBox">
+          <p class="mb-2 fw-semibold">Atendimento Confiança Engenharia fale conosco 😃</p>
+          <div id="chat">
+            <div class="msg">👋 Olá, em que posso ajudar? 😃</div>
+            <div class="resposta" id="step0">
+              <textarea class="form-control mb-2" id="assunto" placeholder="Digite sua dúvida ou interesse..." required=""></textarea>
+              <button class="btn btn-success w-100 rounded-pill" onclick="proximo(0)">Responder</button>
+            </div>
+          </div>
+        </div>
+        <script>
+          let dados = {};
+          let passoAtual = 0;
+
+          function proximo(passo) {
+            passoAtual = passo;
+            const chat = document.getElementById('chat');
+
+            function renderResposta(id, html) {
+              const elem = document.getElementById(`step${id}`);
+              if (elem) elem.outerHTML = html;
+            }
+
+            function voltarBtn() {
+              return `<button class="btn btn-secondary w-100 rounded-pill mt-2" onclick="voltar()">Voltar</button>`;
+            }
+
+            // Passo 0
+            if (passo === 0) {
+              const assunto = document.getElementById('assunto').value.trim();
+              if (!assunto) return alert("Digite como podemos ajudar.");
+              dados.assunto = assunto;
+
+              chat.innerHTML += `<div class="msg"><strong>${assunto}</strong></div>`;
+              chat.innerHTML += `<div class="msg">Seja Bem Vindo(a)!</div>`;
+              chat.innerHTML += `<div class="msg">Meu nome é Cláudio</div>`;
+              chat.innerHTML += `<div class="msg">Uma de nossos analistas irá te atender</div>`;
+              chat.innerHTML += `<div class="msg">Qual o seu nome, por favor?</div>`;
+
+              renderResposta(0, `
+                <div class="resposta" id="step1">
+                  <input type="text" id="nome" class="form-control mb-2" value="${dados.nome || ''}" placeholder="Seu nome" required>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(1)">Próximo</button>
+                </div>`);
+            }
+
+            // Passo 1
+            else if (passo === 1) {
+              const nome = document.getElementById('nome').value.trim();
+              if (!nome) return alert("Digite seu nome.");
+              dados.nome = nome;
+
+              chat.innerHTML += `<div class="msg"><strong>${nome}</strong></div>`;
+              chat.innerHTML += `<div class="msg">Ótimo, ${nome}! Agora, me diga seu telefone para contato.</div>`;
+
+              renderResposta(1, `
+                <div class="resposta" id="step2">
+                  <input type="tel" id="telefone" class="form-control mb-2" value="${dados.telefone || ''}" placeholder="(DDD) 99999-9999" required>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(2)">Próximo</button>
+                  ${voltarBtn()}
+                </div>`);
+            }
+
+            // Passo 2
+            else if (passo === 2) {
+              const tel = document.getElementById('telefone').value.trim();
+              if (!tel) return alert("Digite seu telefone.");
+              dados.telefone = tel;
+
+              chat.innerHTML += `<div class="msg"><strong>${tel}</strong></div>`;
+              chat.innerHTML += `<div class="msg">Me informe seu e-mail 😊</div>`;
+
+              renderResposta(2, `
+                <div class="resposta" id="step3">
+                  <input type="email" id="email" class="form-control mb-2" value="${dados.email || ''}" placeholder="email@exemplo.com" required>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(3)">Próximo</button>
+                  ${voltarBtn()}
+                </div>`);
+            }
+
+            // Passo 3 - CEP
+            else if (passo === 3) {
+              const email = document.getElementById('email').value.trim();
+              if (!email) return alert("Digite seu e-mail.");
+              dados.email = email;
+
+              chat.innerHTML += `<div class="msg"><strong>${email}</strong></div>`;
+              chat.innerHTML += `<div class="msg">Qual o seu CEP?</div>`;
+
+              renderResposta(3, `
+                <div class="resposta" id="step4">
+                  <input type="text" id="cep" class="form-control mb-2" value="${dados.cep || ''}" placeholder="00000-000" required>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(4)">Próximo</button>
+                  ${voltarBtn()}
+                </div>`);
+            }
+
+            // Passo 4 - Consumo
+            else if (passo === 4) {
+              const cep = document.getElementById('cep').value.trim();
+              if (!cep) return alert("Digite seu CEP.");
+              dados.cep = cep;
+
+              chat.innerHTML += `<div class="msg"><strong>${cep}</strong></div>`;
+              chat.innerHTML += `<div class="msg">Qual o valor médio do consumo mensal (em kWh)?</div>`;
+
+              renderResposta(4, `
+                <div class="resposta" id="step5">
+                  <input type="number" id="consumo" class="form-control mb-2" value="${dados.consumo || ''}" placeholder="Ex: 300" required>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(5)">Próximo</button>
+                  ${voltarBtn()}
+                </div>`);
+            }
+
+            // Passo 5 - Tipo de telhado
+            else if (passo === 5) {
+              const consumo = document.getElementById('consumo').value.trim();
+              if (!consumo) return alert("Digite o consumo.");
+              dados.consumo = consumo;
+
+              chat.innerHTML += `<div class="msg"><strong>${consumo} kWh</strong></div>`;
+              chat.innerHTML += `<div class="msg">Qual o tipo de telhado?</div>`;
+
+              renderResposta(5, `
+                <div class="resposta" id="step6">
+                  <select id="telhado" class="form-control mb-2" required>
+                    <option value="">Escolha...</option>
+                    <option ${dados.telhado === "Metálico" ? "selected" : ""}>Metálico</option>
+                    <option ${dados.telhado === "Fibrocimento" ? "selected" : ""}>Fibrocimento</option>
+                    <option ${dados.telhado === "Cerâmica" ? "selected" : ""}>Cerâmica</option>
+                    <option ${dados.telhado === "Zinco" ? "selected" : ""}>Zinco</option>
+                    <option ${dados.telhado === "Laje" ? "selected" : ""}>Laje</option>
+                    <option ${dados.telhado === "Solo" ? "selected" : ""}>Solo</option>
+                  </select>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(6)">Próximo</button>
+                  ${voltarBtn()}
+                </div>`);
+            }
+
+            // Passo 6 - Conexão
+            else if (passo === 6) {
+              const telhado = document.getElementById('telhado').value;
+              if (!telhado) return alert("Escolha o tipo de telhado.");
+              dados.telhado = telhado;
+
+              chat.innerHTML += `<div class="msg"><strong>${telhado}</strong></div>`;
+              chat.innerHTML += `<div class="msg">Qual o tipo de conexão elétrica?</div>`;
+
+              renderResposta(6, `
+                <div class="resposta" id="step7">
+                  <select id="conexao" class="form-control mb-2" required>
+                    <option value="">Escolha...</option>
+                    <option ${dados.conexao === "Monofásico" ? "selected" : ""}>Monofásico</option>
+                    <option ${dados.conexao === "Bifásico" ? "selected" : ""}>Bifásico</option>
+                    <option ${dados.conexao === "Trifásico" ? "selected" : ""}>Trifásico</option>
+                  </select>
+                  <button class="btn btn-success w-100 rounded-pill" onclick="proximo(7)">Finalizar</button>
+                  ${voltarBtn()}
+                </div>`);
+            }
+
+            // Final
+            else if (passo === 7) {
+              const conexao = document.getElementById('conexao').value;
+              if (!conexao) return alert("Escolha a conexão.");
+              dados.conexao = conexao;
+
+              chat.innerHTML += `<div class="msg"><strong>${conexao}</strong></div>`;
+              chat.innerHTML += `<div class="msg">✅ Obrigado! Redirecionando para o WhatsApp...</div>`;
+
+              const numero = "5521979833279";
+              const texto = `Olá! O que posso te Ajudar? deixe seus dados.%0A%0A` +
+                `🗨️ Assunto: ${encodeURIComponent(dados.assunto)}%0A` +
+                `👤 Nome: ${encodeURIComponent(dados.nome)}%0A` +
+                `📞 Telefone: ${encodeURIComponent(dados.telefone)}%0A` +
+                `📧 E-mail: ${encodeURIComponent(dados.email)}%0A` +
+                `📍 CEP: ${encodeURIComponent(dados.cep)}%0A` +
+                `⚡ Consumo: ${encodeURIComponent(dados.consumo)} kWh%0A` +
+                `🏠 Telhado: ${encodeURIComponent(dados.telhado)}%0A` +
+                `🔌 Conexão: ${encodeURIComponent(dados.conexao)}`;
+
+              setTimeout(() => {
+                window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
+                // Limpa os dados e reinicia o chat
+                dados = {};
+                passoAtual = 0;
+                chat.innerHTML = `
+                  <div class="msg">👋 Olá, em que posso ajudar? 😃</div>
+                  <div class="resposta" id="step0">
+                    <textarea class="form-control mb-2" id="assunto" placeholder="Digite sua dúvida ou interesse..." required=""></textarea>
+                    <button class="btn btn-success w-100 rounded-pill" onclick="proximo(0)">Responder</button>
+                  </div>
+                `;
+              }, 1500);
+
+              document.getElementById('step7').remove();
+            }
+          }
+
+          function voltar() {
+            if (passoAtual > 0) {
+              proximo(passoAtual - 1);
+            }
+          }
+        </script>
+        <style>
+          .chat-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+          }
+          .msg {
+            background: #e0ffe0;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            text-align: left;
+          }
+          .resposta {
+            margin-top: 10px;
+          }
+          input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+          }
+          .btn {
+            background: #23e00b;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 10px;
+          }
+          .btn:hover {
+            background: #e4d50b;
+          }
+        </style>
+      </div>
+      <!-- Localização -->
+      <div class="col-md-6">
+        <div class="contact-info bg-white p-4 rounded-4 shadow">
+          <div class="mb-3">
+            <i class="fas fa-map-marker-alt"></i>
+            <strong>Endereço:</strong>
+            <p class="mb-0">Avenida das Américas, 4200, BL 1, Sala 305 - Barra da Tijuca - RJ</p>
+            <a class="btn btn-outline-warning btn-sm mt-2" href="https://www.google.com/maps?q=Avenida+das+Américas,+4200,+Barra+da+Tijuca,+RJ" target="_blank">
+              Ver localização no mapa <i class="fas fa-location-arrow"></i>
+            </a>
+            <div class="mt-3">
+              <iframe
+                src="https://www.google.com/maps?q=Avenida+das+Américas,+4200,+Barra+da+Tijuca,+RJ&output=embed"
+                width="100%" height="200" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="mb-3">
+            <i class="fas fa-envelope"></i>
+            <strong>Email:</strong>
+            <p class="mb-0">contato@confiancaeletricasolar.com.br</p>
+          </div>
+          <div class="mb-3">
+            <i class="fas fa-phone"></i>
+            <strong>Telefone:</strong>
+            <p class="mb-0">21 97983-3279</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="footer mt-5">
+<div class="container text-center">
+<div class="footer-logo mb-2">
+<a class="fw-bold fs-4" href="#"><span class="logo-circle"></span> CFC</a>
+</div>
+<div class="footer-social mb-3">
+<a href="https://www.facebook.com/share/19Zvw2qABi/"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.tiktok.com/@confianca.eletrica"><i class= "fab fa-tiktok"></i></a>
+<a href="https://www.instagram.com/confianca.eletrica/"><i class="fab fa-instagram"></i></a>
+
+</div>
+<p class="mb-1">Estamos em todas as redes sociais</p>
+<p class="mb-0">© CFC 2025 | Desenvolvido por <a href="#">Leri Everson da Silva Carlos</a></p>
+</div>
+</footer>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Owl Carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.js"></script>
+<!-- Custom JS -->
+<script src="js/main.js"></script>
+</div></body>
+</html>
